@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${PG_URL}
+    username: ${PG_USERNAME}
+    password: ${PG_PASSWORD}
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+app:
+  config:
+    hibernate:
+      ddl-auto: none
+      show-sql: false
+    hive:
+      batch-size: 1000
+      url: ${HIVE_URL}
+      auth-config-path: ${HIVE_JAAS_CONFIG_PATH}
+      auth-useSubjectCredsOnly: false
+      krb5-config-path: ${HIVE_KRB5_CONFIG_PATH}
+      krb5-debug: false
+      hikari-connection-timeout: 30000
+      hikari-max-pool-size: 1
+      hikari-min-idle: 1
+      hikari-max-lifetime: 0
+      schema: ${SCHEMA}
+      type_of_queue: tez.queue.name
+      name_of_queue: ${NAME_OF_QUEUE}
+  schedule:
+    cron: 0 06 13 * * ?
+    delay: 1000
